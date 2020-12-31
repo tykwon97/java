@@ -1,0 +1,33 @@
+<java>
+
+string은 참조 타입이다.
+
+변수는 스택 영역에 생성, 객체는 힙 영역에 생성
+
+참조변수의 ==, != 연산 -> 동일한 객체를 참조하고있는지 확인 (= 동일한 주소 값을 갖고있는지 비교)
+
+string은 문자열 리터럴이 동일하면 string객체를 공유한다.
+ex) String name1="권태윤";
+    String name2="권태윤";
+->동일한 string 객체 참조
+
+ex) String name1=new String("권태윤");
+    String name2=new String("권태윤");
+-> 다른 string 객체 참조
+
+ex) String name1="권태윤";
+    String name2="권태윤";
+    String name3=new String("권태윤");
+-> name1==name2 -> true
+    name1==name3 -> false
+    name2==name3 -> false
+-> 같은 주소를 참조해야됨
+
+동일한 String객체이건 다른 String객체이건 상관ㅇ벗이 문자열만을 비교할 때에는 String 객체의 equals()메소드를 사용
+ex) boolean result = str1.equals(str2);
+
+String hobby ="여행";
+hobby=null;
+->참조를 잃은 String 객체는 JVM이 쓰레기 객체로 취급하고 쓰레기 수집기를 구동시켜 메모리에서 자동 삭제
+
+
