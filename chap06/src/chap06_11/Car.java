@@ -7,6 +7,7 @@ public class Car {
 	//필드
 	private int speed;
 	private boolean stop;
+	//boolean은 기본적으로 false이다.
 	
 	//생성자
 	
