@@ -1,3 +1,5 @@
+//html íŒŒì‹±ì—°ìŠµ + XMLë¡œ ì €ìž¥
+
 package week2;
 
 import java.io.File;
@@ -33,34 +35,34 @@ public class html_parser {
 
 
 		try {
-			 File dir = new File("./week2/html_example");//°Ë»öÇÒ µð·ºÅä¸®
+			 File dir = new File("./week2/html_example");//ê²€ìƒ‰í•  ë””ë ‰í† ë¦¬
 			 File files[] = dir.listFiles();
 			
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
-			// docs ¿¤¸®¸ÕÆ®
+			// docs ì—˜ë¦¬ë¨¼íŠ¸
 			Document docu = docBuilder.newDocument();
-			docu.setXmlStandalone(true); //standalone="no" ¸¦ ¾ø¾ÖÁØ´Ù.
+			docu.setXmlStandalone(true); //standalone="no" ë¥¼ ì—†ì• ì¤€ë‹¤.
 
 			Element docs = docu.createElement("docs");
 			docu.appendChild(docs);
 			for(int i=0;i<files.length;i++) {
 				
-				// doc ¿¤¸®¸ÕÆ®
+				// doc ì—˜ë¦¬ë¨¼íŠ¸
 				Element doc = docu.createElement("doc");
 				docs.appendChild(doc);
 				
-				// ¼Ó¼º°ª Á¤ÀÇ (id:1)
+				// ì†ì„±ê°’ ì •ì˜ (id:1)
 				String StrNum = Integer.toString(i);
 				doc.setAttribute("id", StrNum);
 
-				// title ¿¤¸®¸ÕÆ®
+				// title ì—˜ë¦¬ë¨¼íŠ¸
 				Element title = docu.createElement("title");
-				// body ¿¤¸®¸ÕÆ®
+				// body ì—˜ë¦¬ë¨¼íŠ¸
 				Element body = docu.createElement("body");
 
-				//File file = new File("./week2/html_example/¶±.html");
+				//File file = new File("./week2/html_example/ë–¡.html");
 				File file = new File(""+files[i]);
 				if(file.exists()) 
 				{
@@ -92,14 +94,14 @@ public class html_parser {
 				//doc = docu.createElement("doc");
 				docs.appendChild(doc);
 			}
-			// XML ÆÄÀÏ·Î ¾²±â
+			// XML íŒŒì¼ë¡œ ì“°ê¸°
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 
 			Transformer transformer = transformerFactory.newTransformer();
-			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4"); //Á¤·Ä ½ºÆäÀÌ½º4Ä­
+			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4"); //ì •ë ¬ ìŠ¤íŽ˜ì´ìŠ¤4ì¹¸
 			transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-			transformer.setOutputProperty(OutputKeys.INDENT, "yes"); //µé¿©¾²±â
-			transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, "yes"); //doc.setXmlStandalone(true); ÇßÀ»¶§ ºÙ¾î¼­ Ãâ·ÂµÇ´ÂºÎºÐ °³Çà
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes"); //ë“¤ì—¬ì“°ê¸°
+			transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, "yes"); //doc.setXmlStandalone(true); í–ˆì„ë•Œ ë¶™ì–´ì„œ ì¶œë ¥ë˜ëŠ”ë¶€ë¶„ ê°œí–‰
 
 			DOMSource source = new DOMSource(docu);
 			StreamResult result = new StreamResult(new FileOutputStream(new File("./week2/food.xml")));
